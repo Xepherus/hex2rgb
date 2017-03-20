@@ -18,7 +18,7 @@ def rgb_hex(): # Function for RGB to HEX conversion
     print invalid_msg
     return
   val = (red << 16) + (green << 8) + blue # Shifts bits left by pre-determined amount
-  print "%s" % (hex(val)[2:]).upper() # Final output
+  print "Hexidecimal Value: %s" % (hex(val)[2:]).upper() # Final output
 
 def hex_rgb(): # Function for HEX to RGB conversion
   hex_val = raw_input("Enter a hex value: ") # Request input
