@@ -2,6 +2,8 @@
 Simple script for converting HEX to RGB and RGB to Hex
 """
 
+import argparse
+
 
 def rgb_hex():  # Function for RGB to HEX conversion
     invalid_msg = "Error, Invalid Input."
@@ -39,21 +41,14 @@ def hex_rgb():  # Function for HEX to RGB conversion
     print("Red: %s Green: %s Blue: %s" % (red, green, blue))  # Final output
 
 
-def convert():  # Menu function
-    while True:
-        option = input(
-            "Enter 1 to convert RGB to HEX. Enter 2 to convert HEX to RGB. Enter X to Exit: "
-        )
-        if option == "1":
-            print("RGB to Hex...")
-            rgb_hex()
-        elif option == "2":
-            print("HEX to RGB...")
-            hex_rgb()
-        elif option == "X" or "x":
-            break
-        else:
-            print("Error")
+parser = argparse.ArgumentParser(description="Takes user selection for which operation to perform")
+parser.add_argument("Conversion", metavar="conversion", type=str, help="Specify either hex2rgb or rgb2hex after the script name")
+args = parser.parse_args()
 
-
-convert()
+try:
+    if args.Conversion == "hex2rgb":
+        hex_rgb()
+    elif args.Conversion == "rgb2hex":
+        rgb_hex()
+except (ValueError, KeyboardInterrupt):
+    print("\r\nYou either CTRL-C'd out or need to specify a value, pal.")
